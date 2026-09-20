@@ -1,0 +1,442 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About SymptoCheck - AI Health Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+
+    <style>
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary-color: #10b981;
+      --accent-color: #f59e0b;
+      --danger-color: #ef4444;
+      --success-color: #22c55e;
+      --warning-color: #f59e0b;
+      --info-color: #3b82f6;
+      --dark-color: #1f2937;
+      --light-color: #f8fafc;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary-color) !important;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #374151 !important;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover {
+      color: #10b981 !important;
+    }
+
+    .nav-link.active {
+      color: #10b981 !important;
+      font-weight: 600;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .myimg {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: contain;
+      display: block;
+      background-color: transparent;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .navbar-collapse {
+      display: flex !important;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .navbar-nav {
+      margin: 0 !important;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .navbar-brand {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section {
+      padding: 80px 0;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .content-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--shadow-xl);
+      padding: 3rem;
+      margin: 2rem auto;
+      max-width: 1000px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .process-step {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .step-number {
+      background: var(--primary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .tech-stack {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .tech-item {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .warning-box {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid var(--warning-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .content-container { padding: 2rem; margin: 1rem; }
+      .section-title { font-size: 2rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <!-- logo and brand -->
+            <div class="d-flex align-items-center">
+                <div class="logo">
+                    <img class="myimg" src="/static/Sympto.png" alt="SymptoCheck Logo" onerror="this.onerror=null; this.src='/static/example logo.png';">
+                </div>
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-stethoscope me-2"></i>SymptoCheck
+                </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about">About</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="/contact">Contact</a>-->
+<!--                    </li>-->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero section -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title fade-in">
+                <i class="fas fa-brain me-3"></i>About SymptoCheck
+            </h1>
+            <p class="hero-subtitle fade-in">
+                Revolutionizing healthcare with AI-powered symptom analysis and personalized health recommendations
+            </p>
+        </div>
+    </div>
+
+    <!-- main content -->
+    <div class="container">
+        <div class="content-container fade-in">
+            <!-- project overview -->
+            <h2 class="section-title">
+                <i class="fas fa-project-diagram me-3"></i>What is SymptoCheck?
+            </h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <p class="lead text-center mb-4">
+                        SymptoCheck is an innovative AI-powered health assistant that uses advanced machine learning algorithms 
+                        to analyze symptoms and provide comprehensive health insights, recommendations, and guidance.
+                    </p>
+                    <p class="text-center text-muted">
+                        Our platform combines cutting-edge artificial intelligence with medical expertise to help users 
+                        understand their symptoms and make informed decisions about their health.
+                    </p>
+                </div>
+            </div>
+
+            <!-- key features -->
+            <h2 class="section-title">
+                <i class="fas fa-star me-3"></i>Key Features
+            </h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Voice Input</h4>
+                        <p class="text-center text-muted">
+                            Speak your symptoms naturally using our advanced speech recognition technology. 
+                            No need to type - just talk and let AI understand you.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="text-center mb-3">AI Analysis</h4>
+                        <p class="text-center text-muted">
+                            Our machine learning models analyze symptoms using trained datasets to provide 
+                            accurate predictions and health insights.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Comprehensive Results</h4>
+                        <p class="text-center text-muted">
+                            Get detailed information including disease descriptions, precautions, 
+                            medications, workout plans, and dietary recommendations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- how it works -->
+            <h2 class="section-title">
+                <i class="fas fa-cogs me-3"></i>How SymptoCheck Works
+            </h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4><i class="fas fa-keyboard me-2"></i>Symptom Input</h4>
+                        <p>Users enter their symptoms either by typing or using voice input. The system accepts natural language descriptions of symptoms like "headache, fever, nausea".</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4><i class="fas fa-search me-2"></i>Data Processing</h4>
+                        <p>Our AI system processes the input using machine learning algorithms trained on medical datasets. It analyzes symptom patterns and matches them against known conditions.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4><i class="fas fa-chart-line me-2"></i>Prediction & Analysis</h4>
+                        <p>The system generates predictions about potential diseases and provides confidence scores. It also retrieves relevant medical information from our comprehensive database.</p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4><i class="fas fa-file-medical me-2"></i>Comprehensive Results</h4>
+                        <p>Users receive detailed results including disease predictions, descriptions, precautions, medication suggestions, exercise recommendations, and dietary advice.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- data sources -->
+            <h2 class="section-title">
+                <i class="fas fa-database me-3"></i>Data Sources & Training
+            </h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="feature-card">
+                        <h4 class="text-center mb-3"><i class="fas fa-chart-bar me-2"></i>Medical Datasets</h4>
+                        <p class="text-center text-muted mb-3">
+                            Our AI models are trained on comprehensive medical datasets including:
+                        </p>
+                        <ul class="list-unstyled text-center">
+                            <li><i class="fas fa-check text-success me-2"></i>Symptom-severity mappings</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Disease descriptions and classifications</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Medication recommendations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Precaution guidelines</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Exercise and diet plans</li>
+          </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- important disclaimer -->
+            <div class="warning-box">
+                <h4 class="text-center mb-3">
+                    <i class="fas fa-exclamation-triangle me-2"></i>Important Medical Disclaimer
+                </h4>
+                <p class="text-center mb-0">
+                    <strong>SymptoCheck is for informational purposes only and should not replace professional medical advice.</strong>
+                    Always consult with qualified healthcare professionals for proper diagnosis and treatment. 
+                    This AI system is designed to provide general health insights and should be used as a supplementary tool, 
+                    not as a substitute for medical consultation.
+                </p>
+            </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Bootstrap demo</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">-->
+<!--  </head>-->
+<!--  <body>-->
+
+
+<!--&lt;!&ndash;  navbar code&ndash;&gt;-->
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">-->
+<!--  <div class="container-fluid">-->
+<!--    <a class="navbar-brand" href="#">Navbar</a>-->
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="#">Link</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item dropdown">-->
+<!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            Dropdown-->
+<!--          </a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--            <li><hr class="dropdown-divider"></li>-->
+<!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <form class="d-flex" role="search">-->
+<!--        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>-->
+<!--        <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--    <h1 class="text-center">SymptoCheck Healthcare!</h1>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>-->
+<!--  </body>-->
+<!--</html>-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navbar Example</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      /* Nav background and subtle bottom border like the screenshot */
+      .navbar-custom {
+        background: #e9fbfa; /* pale mint/teal */
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+      }
+
+      /* Brand (logo + text) */
+      .navbar-brand img {
+        height: 36px;
+        width: auto;
+        margin-right: 8px;
+      }
+      .brand-text {
+        font-weight: 600;
+        color: #0b6b6a; /* teal-ish */
+        font-size: 1.05rem;
+      }
+
+      /* Center nav links */
+      .navbar-collapse {
+        display: flex !important;
+        justify-content: center;
+        flex-grow: 1;
+      }
+
+      .navbar-nav {
+        margin: 0 !important;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 0.5rem;
+      }
+
+      .navbar-brand {
+        position: relative;
+        z-index: 1;
+      }
+      .nav-link {
+        color: #374151 !important;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease;
+        font-size: 0.95rem;
+      }
+      .nav-link:hover, .nav-link:focus {
+        color: #10b981 !important;
+      }
+      .nav-link.active {
+        color: #10b981 !important;
+        font-weight: 600;
+      }
+
+      /* Appointment button style */
+      .btn-appointment {
+        background: #1366c6; /* strong blue */
+        color: #fff;
+        border-radius: 6px;
+        padding: .45rem .9rem;
+        box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+        font-weight: 600;
+      }
+      .btn-appointment:hover { filter: brightness(.95); }
+
+      /* Small tweak for dropdown caret color */
+      .dropdown-toggle::after { color: #0b6b6a; }
+
+      /* Make sure collapsed menu links look good */
+      @media (max-width: 991px) {
+        .navbar-nav { 
+          position: static !important;
+          transform: none !important;
+          margin-top: .5rem; 
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="/static/example logo.png" alt="logo" />
+          <span class="brand-text">SymptoCheck</span>
+        </a>
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav links and right-side button -->
+        <div class="collapse navbar-collapse" id="mainNav">
+          <!-- Centered nav links -->
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/developer">Developer</a></li>
+            <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+          </ul>
+
+          <!-- Right-side: small text or utility + appointment button -->
+<!--          <div class="d-flex align-items-center">-->
+<!--            &lt;!&ndash; optional small utility text &ndash;&gt;-->
+<!--            <div class="me-3 d-none d-lg-block" style="color:#0b6b6a; font-weight:500; font-size:.95rem;">-->
+<!--              Our Facilities-->
+<!--            </div>-->
+<!--            <a class="btn btn-appointment" href="#">Make Appointment</a>-->
+<!--          </div>-->
+        </div>
+      </div>
+    </nav>
+
+
+
+    <main class="container mt-5">
+      <h1 class="text-center"> Please let us know your Symptoms!</h1>
+    </main>
+
+    <div class="container">
+      <form action="/predict" method="post">
+        <div class="class--group">
+          <label for="symptoms">Enter Symptoms</label>
+          <input type="text" class="form-control" name="symptoms" placeholder="itching,coughing,shivering,...,etc.">
+        </div>
+      </form>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
